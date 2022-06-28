@@ -1,8 +1,8 @@
 const app = require("express")();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http, { cors: { origin: "*" } });
-
-http.listen(5000, function () {
+const PORT = process.env.PORT || 5000;
+http.listen(PORT, function () {
     console.log("listening on *:5000");
     io.on("connection", (socket) => {
         const id = socket.handshake.query.id;
