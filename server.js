@@ -8,6 +8,11 @@ http.listen(PORT, function () {
         const id = socket.handshake.query.id;
         socket.join(id);
 
+        socket.on("join_room", (data) => {
+            socket.join(data);
+            console.log(`User with ID: ${socket.id} joined room: ${data}`);
+        });
+
         socket.on("send-message", ({ recipients, text }) => {
             recipients.forEach((recipient) => {
                 const newRecipients = recipients.filter((r) => r !== recipient);
