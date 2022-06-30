@@ -32,7 +32,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 const createChat = (data) => {
-    const ref = doc(db, "chats", data).toString();
+    const ref = doc(db, "chats", data);
 };
 
 module.exports = {
